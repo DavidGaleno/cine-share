@@ -2,7 +2,7 @@ import { searchMovies } from 'API/requistion';
 import { showMovieData } from 'API/requistion';
 import { useEffect, useState } from 'react';
 import './App.css';
-function App() {
+export const Routes = () => {
   const [movies, setMovies] = useState()
   useEffect(() => {
     const getMovies = async () => {
