@@ -23,4 +23,4 @@ yarn-debug.log*
 yarn-error.log*
 
 #API keys and requisitions
-/src/API
+API_KEY.js
