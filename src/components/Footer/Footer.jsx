@@ -12,8 +12,8 @@ export const Footer = () => {
                     <GitHubIcon style={{ fontSize: '3rem' }} />
                 </a>
             </Links>
-            <MainText>Developed by David Galeno</MainText>
-            <SubText>Brazil - Brasilia - Federal District</SubText>
+            <MainText className='text'>Developed by David Galeno</MainText>
+            <SubText className='text'>Brazil - Brasilia - Federal District</SubText>
         </Container>
     )
 }
@@ -25,6 +25,9 @@ const Container = styled.footer`
     padding: 1rem 2rem;
     background-color: black;
     color:white;
+    .text{
+        font-weight: 400;
+    }
 `
 const Links = styled.div`
     display:flex;
@@ -33,11 +36,11 @@ const Links = styled.div`
     gap:1rem;
     a{
         color:white;
-
     }
 `
 const MainText = styled.h4`
     font-size: 1.8rem;
+
 `
 const SubText = styled.h4`
     font-size: 1.5rem;
