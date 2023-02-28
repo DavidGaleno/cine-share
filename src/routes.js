@@ -1,5 +1,7 @@
 import { searchMovies } from 'API/requistion';
 import { showMovieData } from 'API/requistion';
+import { Footer } from 'components/Footer/Footer';
+import { Header } from 'components/Header/Header';
 import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import './App.css';
@@ -14,7 +16,9 @@ export const Routes = () => {
 
   return (
     <div className="Routes">
+      <Header />
       <Outlet />
+      <Footer />
     </div>
   );
 }
