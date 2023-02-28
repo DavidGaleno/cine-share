@@ -25,16 +25,16 @@ const Container = styled.footer`
     padding: 1rem 2rem;
     background-color: black;
     color:white;
-    a{
-        color:white;
-
-    }
 `
 const Links = styled.div`
     display:flex;
     justify-content:center;
     align-items:center;
     gap:1rem;
+    a{
+        color:white;
+
+    }
 `
 const MainText = styled.h4`
     font-size: 1.8rem;
