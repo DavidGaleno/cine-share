@@ -19,12 +19,16 @@ export const Player = () => {
     }, [])
     return (
         <Container>
-            {trailer && <ReactPlayer url={`https://www.youtube.com/watch?v=${trailer.key}`} />}
+            {trailer && <ReactPlayer playing
+                width="100%"
+                height="80rem"
+                controls={false} url={`https://www.youtube.com/watch?v=${trailer.key}`} />}
         </Container>
     )
 }
 
 const Container = styled.div`
+    width:100%;
     display:flex;
     flex-direction: column;
     justify-content:center;
