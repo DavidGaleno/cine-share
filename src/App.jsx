@@ -1,5 +1,5 @@
-import { Footer } from 'components/Footer';
-import { Header } from 'components/Header';
+import { Footer } from 'components/Layout/Footer';
+import { Header } from 'components/Layout/Header';
 import { Banner } from 'components/Banner';
 import { Title } from 'components/Title';
 import { Outlet, useLocation } from 'react-router-dom';
@@ -7,37 +7,54 @@ import styled from 'styled-components';
 import './App.css';
 import { useEffect, useState } from 'react';
 import { GlobalContextProvider } from 'context/GlobalContext';
+import { getMovies, searchMovies } from 'API/requistion';
 
-export const Routes = () => {
+export const App = () => {
   const location = useLocation()
+  const [movies, setMovies] = useState()
+  const [inputValue, setInputValue] = useState(localStorage.getItem('input-value') === null ? '' : localStorage.getItem('input-value'))
   const [route, setRoute] = useState()
   const [label, setLabel] = useState()
+  const [display, setDisplay] = useState()
+
+  useEffect(() => {
+    const loadMovies = async () => {
+      if (inputValue) return setMovies(await searchMovies(inputValue))
+      setMovies(await getMovies())
+    }
+    loadMovies()
+  }, []);
 
   useEffect(() => {
     if (location.pathname === '/') {
       setRoute('home')
       setLabel('The Place to Keep Your Movies')
-      return
+      setDisplay('block')
     }
-    if (location.pathname === '/favorites') {
+    else if (location.pathname === '/favorites') {
       setRoute('favorites')
       setLabel('Favorites')
-      return
+      setDisplay('block')
     }
-    if (location.pathname.includes('player')) {
+    else if (location.pathname.includes('player')) {
       setRoute('player')
       setLabel('Player')
-      return
+      setDisplay('block')
+    }
+    else {
+      setDisplay('none')
     }
   }, [location])
+
+
 
   return (
     <GlobalContextProvider>
       <Header />
-      <Banner route={route} />
+      <Banner display={display} route={route} />
       <Title route={route}>{label}</Title>
       <Container>
-        <Outlet />
+        <Outlet context={{ movies, setMovies, inputValue, setInputValue }} />
       </Container>
       <Footer />
     </GlobalContextProvider>
@@ -54,4 +71,4 @@ const Container = styled.div`
 
 
 
-export default Routes;
+export default App;

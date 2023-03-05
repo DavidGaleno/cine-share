@@ -1,7 +1,7 @@
 import styled from "styled-components"
-export const Banner = ({ route }) => {
+export const Banner = ({ route,display }) => {
     return (
-        <Container route={route}>
+        <Container display={display} route={route}>
         </Container >
     )
 }
@@ -13,4 +13,5 @@ const Container = styled.div`
      background-repeat: no-repeat;
      //For some reason when I use absolute path for importing images and a react-router-path has more than 2 '/', the image wont render. So I will use this relative path.
      background-image: ${({ route }) => `url('../../assets/images/${route}_banner.png')`};
+     display: ${({ display }) => `${display}`}
 `

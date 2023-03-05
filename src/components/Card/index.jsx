@@ -3,6 +3,7 @@ import { useContext, useState, useEffect } from 'react';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { GlobalContext } from 'context/GlobalContext';
+import { Link } from 'react-router-dom';
 export const Card = ({ id, title, cover }) => {
     const { favorites, setFavorites } = useContext(GlobalContext)
     useEffect(() => {
@@ -11,9 +12,12 @@ export const Card = ({ id, title, cover }) => {
     }, [favorites])
     return (
         <Container>
-            <CardImage src={cover} alt={title} />
+            <Link to={`/player/${id}`}>
+                <CardImage src={cover} alt={title} />
+            </Link>
+
             <CardDescription>
-                <p>{title}</p>
+                <MovieName to={`/player/${id}`}>{title}</MovieName>
                 {favorites.includes(id.toString()) ?
                     <FavoriteIcon className='favorite-icon' onClick={() => setFavorites(favorites.filter(movieId => movieId !== id.toString()))} style={{ color: 'red', fontSize: '3rem' }} />
                     :
@@ -25,14 +29,8 @@ export const Card = ({ id, title, cover }) => {
     )
 }
 
-const Container = styled.div`
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    background-color:gray;
-    gap: 1rem;
-    p{
-        font-size: 2.2rem;
+const MovieName = styled(Link)`
+    font-size: 2.2rem;
         font-weight: 500;
         text-align:center;
         white-space: nowrap;
@@ -41,7 +39,14 @@ const Container = styled.div`
         overflow-y: none;
         width: 85%;
         color:white;
-    }
+        text-decoration: none;
+`
+const Container = styled.div`
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    background-color:gray;
+    gap: 1rem;
     .favorite-icon{
         &:hover{
             cursor:pointer;

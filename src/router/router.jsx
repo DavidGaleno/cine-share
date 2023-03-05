@@ -1,17 +1,20 @@
-import { Home } from "components/Home";
-import { Favorites } from "components/Favorites";
-import { Routes } from "routes";
-import { Player } from "components/Player";
+import { Home } from "components/Pages/Home";
+import { Favorites } from "components/Pages/Favorites";
+import { App } from "App";
+import { Player } from "components/Pages/Player";
+import { NotFound } from "components/Pages/NotFound";
 
 const { createBrowserRouter } = require("react-router-dom");
+
 export const router = createBrowserRouter([
     {
         path: '/',
-        element: <Routes />,
+        element: <App />,
         children: [
             { path: '/', element: < Home /> },
             { path: '/favorites', element: <Favorites /> },
-            { path: '/player/:id?', element: <Player /> }
+            { path: '/player/:id?', element: <Player /> },
+            { path: '/*', element: <NotFound /> }
         ]
     }
 ])
