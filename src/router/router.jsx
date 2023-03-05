@@ -1,5 +1,5 @@
-import { Home } from "components/Home/Home";
-import { Favorites } from "components/Favorites/Favorites";
+import { Home } from "components/Home";
+import { Favorites } from "components/Favorites";
 import { Routes } from "routes";
 
 const { createBrowserRouter } = require("react-router-dom");

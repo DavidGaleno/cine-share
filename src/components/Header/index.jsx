@@ -1,5 +1,5 @@
 import BookmarkIcon from '@mui/icons-material/Bookmark';
-import { HeaderLink } from './HeaderLink/HeaderLink';
+import { HeaderLink } from './HeaderLink';
 import styled from "styled-components";
 
 export const Header = () => {
@@ -16,6 +16,7 @@ export const Header = () => {
 
 const Container = styled.header`
     display: flex;
+    position:relative;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
