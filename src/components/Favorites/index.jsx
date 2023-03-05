@@ -24,7 +24,6 @@ export const Favorites = () => {
 }
 
 const Container = styled.div`
-    flex:1;
     width:80%;
     display:grid;
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));

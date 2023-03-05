@@ -17,35 +17,26 @@ export const Routes = () => {
   }, [location])
 
   return (
-    <Container>
       <GlobalContextProvider>
         <Header />
         <Banner route={route} />
         <Title label={route === 'home' ? 'Um Lugar para Guardar Seus Videos e Filmes' : 'Meus Favoritos'} />
-        <RouteContainer>
+        <Container>
           <Outlet />
-        </RouteContainer>
+        </Container>
         <Footer />
       </GlobalContextProvider>
-    </Container>
   );
 }
 
-const RouteContainer = styled.div`
-  flex: 1;
+const Container = styled.div`
   display:flex;
   justify-content:center;
   align-items:center;
   padding:1rem;
-  background-color:white;
+  background-color:black;
 `
-const Container = styled.div`
-  display:flex;
-  flex-direction:column;
-  width:100vw;
-  height:100vh;
-  background-color:black; 
-`
+
 
 
 export default Routes;

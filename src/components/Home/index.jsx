@@ -26,5 +26,4 @@ const Container = styled.div`
     display:grid;
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     grid-gap: 3rem;
-    flex:1;
 `

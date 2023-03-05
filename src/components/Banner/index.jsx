@@ -1,8 +1,8 @@
 import styled from "styled-components"
 export const Banner = ({ route }) => {
     return (
-        <Container section={route}>
-            
+        <Container route={route}>
+
         </Container >
     )
 }
