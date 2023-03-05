@@ -11,5 +11,6 @@ const Container = styled.div`
      height:34.5rem;
      background-size:cover;
      background-repeat: no-repeat;
-     background-image: ${({ route }) => `url('assets/images/${route}_banner.png')`};
+     //For some reason when I use absolute path for importing images and a react-router-path has more than 2 '/', the image wont render. So I will use this relative path.
+     background-image: ${({ route }) => `url('../../assets/images/${route}_banner.png')`};
 `
