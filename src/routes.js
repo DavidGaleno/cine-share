@@ -7,20 +7,35 @@ import styled from 'styled-components';
 import './App.css';
 import { useEffect, useState } from 'react';
 import { GlobalContextProvider } from 'context/GlobalContext';
+
 export const Routes = () => {
   const location = useLocation()
   const [route, setRoute] = useState()
+  const [label, setLabel] = useState()
 
   useEffect(() => {
-    if (location.pathname === '/') setRoute('home')
-    else setRoute(location.pathname.replace('/', ''))
+    if (location.pathname === '/') {
+      setRoute('home')
+      setLabel('The Place to Keep Your Movies')
+      return
+    }
+    if (location.pathname === '/favorites') {
+      setRoute('favorites')
+      setLabel('Favorites')
+      return
+    }
+    if (location.pathname.includes('player')) {
+      setRoute('player')
+      setLabel('Player')
+      return
+    }
   }, [location])
 
   return (
     <GlobalContextProvider>
       <Header />
       <Banner route={route} />
-      <Title label={route === 'home' ? 'Um Lugar para Guardar Seus Videos e Filmes' : 'Meus Favoritos'} />
+      <Title route={route}>{label}</Title>
       <Container>
         <Outlet />
       </Container>

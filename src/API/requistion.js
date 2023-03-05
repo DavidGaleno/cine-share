@@ -7,8 +7,8 @@ export const showYoutubeVideosThumbanils = (videos) => {
     videos.map(video => <img src={`https://img.youtube.com/vi/${video.id.videoId}/hqdefault.jpg`} alt="Thumbnail" />
     )
 }
-export const showPopularMovies = async () =>{
-    const movies = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${TMDB_API_KEY}`).then(resp=>resp.json()).then(data=> data.results.slice(0,40))
+export const showPopularMovies = async () => {
+    const movies = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${TMDB_API_KEY}`).then(resp => resp.json()).then(data => data.results.slice(0, 40))
     return movies
 }
 export const searchMovies = async (q) => {
@@ -16,7 +16,7 @@ export const searchMovies = async (q) => {
     const movies = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${q}`).then(resp => resp.json()).then(data => data.results.slice(0, 10))
     return movies
 }
-export const showMovieData = (movie) => {
-    return <img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt="Poster" />
-
+export const getMovieVideos = async (id) => {
+    const videos = await fetch(` https://api.themoviedb.org/3/movie/${id}/videos?api_key=${TMDB_API_KEY}&language=en-US`).then(resp => resp.json()).then(data => data)
+    return videos
 }

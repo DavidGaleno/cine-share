@@ -1,6 +1,7 @@
 import { Home } from "components/Home";
 import { Favorites } from "components/Favorites";
 import { Routes } from "routes";
+import { Player } from "components/Player";
 
 const { createBrowserRouter } = require("react-router-dom");
 export const router = createBrowserRouter([
@@ -9,7 +10,8 @@ export const router = createBrowserRouter([
         element: <Routes />,
         children: [
             { path: '/', element: < Home /> },
-            { path: '/favorites', element: <Favorites /> }
+            { path: '/favorites', element: <Favorites /> },
+            { path: '/movie/:id?/video', element: <Player /> }
         ]
     }
 ])
