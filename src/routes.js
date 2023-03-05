@@ -17,15 +17,15 @@ export const Routes = () => {
   }, [location])
 
   return (
-      <GlobalContextProvider>
-        <Header />
-        <Banner route={route} />
-        <Title label={route === 'home' ? 'Um Lugar para Guardar Seus Videos e Filmes' : 'Meus Favoritos'} />
-        <Container>
-          <Outlet />
-        </Container>
-        <Footer />
-      </GlobalContextProvider>
+    <GlobalContextProvider>
+      <Header />
+      <Banner route={route} />
+      <Title label={route === 'home' ? 'Um Lugar para Guardar Seus Videos e Filmes' : 'Meus Favoritos'} />
+      <Container>
+        <Outlet />
+      </Container>
+      <Footer />
+    </GlobalContextProvider>
   );
 }
 

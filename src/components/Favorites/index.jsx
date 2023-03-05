@@ -1,9 +1,11 @@
 import { GlobalContext } from "context/GlobalContext"
 import { useContext, useEffect } from "react"
 import styled from "styled-components"
+import { SearchBar } from "components/SearchBar"
 import { Card } from "components/Card"
+import { Title } from "components/Title"
 export const Favorites = () => {
-    const { movies, favorites, getMovies } = useContext(GlobalContext);
+    const { movies, favorites, getMovies, searchInput } = useContext(GlobalContext);
     useEffect(() => {
         if (!movies) getMovies()
     }, []);
@@ -15,15 +17,23 @@ export const Favorites = () => {
 
     return (
         <Container>
-            {movies && movies.map(movie => (
-                favorites.includes(movie.id.toString()) &&
-                <Card key={movie.id} id={movie.id.toString()} title={movie.original_title} cover={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} />))}
-            {favorites.length === 0 && <h3>Não há itens nos seus favoritos</h3>}
+            <SearchBar onChange={(q) => {
+                if (q.target.value === "") return getMovies()
+                searchInput(q.target.value)
+            }} />
+            {movies &&
+                <MoviesContainer>
+                    {movies.map(movie => (
+                        favorites.includes(movie.id.toString()) &&
+                        <Card key={movie.id} id={movie.id.toString()} title={movie.original_title} cover={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} />))}
+                </MoviesContainer>}
+            {favorites.length === 0 && <Title>Não há itens nos seus favoritos</Title>}
+            {movies && movies.length === 0 && <Title>Não há filmes correspondentes</Title>}
         </Container>
     )
 }
 
-const Container = styled.div`
+const MoviesContainer = styled.div`
     width:80%;
     display:grid;
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
@@ -35,4 +45,12 @@ const Container = styled.div`
         width:100%;
         height:100%
     }
+`
+
+const Container = styled.div`
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    gap: 3rem;
 `

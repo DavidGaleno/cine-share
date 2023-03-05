@@ -14,11 +14,12 @@ export const Card = ({ id, title, cover }) => {
             <CardImage src={cover} alt={title} />
             <CardDescription>
                 <p>{title}</p>
-                {favorites.includes(id.toString()) ? <FavoriteIcon className='favorite-icon' onClick={() => {
-                    setFavorites(favorites.filter(movieId => movieId !== id.toString()))
-                }} style={{ color: 'red', fontSize: '3rem' }} /> : <FavoriteBorderIcon className='favorite-icon' onClick={() => {
-                    setFavorites(favorites.length > 0 ? [...favorites, id.toString()]: [id.toString()])
-                }} style={{ fontSize: '3rem', color: 'white' }} />}
+                {favorites.includes(id.toString()) ?
+                    <FavoriteIcon className='favorite-icon' onClick={() => setFavorites(favorites.filter(movieId => movieId !== id.toString()))} style={{ color: 'red', fontSize: '3rem' }} />
+                    :
+                    <FavoriteBorderIcon className='favorite-icon' onClick={() => {
+                        setFavorites(favorites.length > 0 ? [...favorites, id.toString()] : [id.toString()])
+                    }} style={{ fontSize: '3rem', color: 'white' }} />}
             </CardDescription>
         </Container>
     )

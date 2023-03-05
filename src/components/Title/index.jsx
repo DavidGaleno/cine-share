@@ -1,11 +1,6 @@
 import styled from "styled-components"
-export const Title = ({ label }) => {
-    return (
-        <Text>{label}</Text>
-    )
-}
 
-const Text = styled.h1`
+export const Title = styled.h1`
     text-align: center;
     font-size:3rem;
     padding:3rem;
